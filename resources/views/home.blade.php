@@ -7,6 +7,23 @@
     <title>Document</title>
 </head>
 <body>
-    Hello World
+    <h1 class="bg-success">Operation successfull</h1>
+    {{-- <h1> {{$data->educationend}} </h1> --}}
+    <h1>Selected Options</h1>
+    
+    <ul>
+        {{-- @foreach($data as $option)
+        <div>
+            <h3>Option Title: {{ $option->title }}</h3>
+            <ul>
+                <li>Self: {{ $option->self }}</li>
+                <li>Job: {{ $option->job  }}</li>
+                <li>University: {{ $option->university  }}</li>
+                <li>Training: {{ $option->training  }}</li>
+                <li>Life/Death: {{ $option->lifeDeath  }}</li>
+            </ul>
+        </div>
+    @endforeach --}}
+    </ul>
 </body>
 </html>

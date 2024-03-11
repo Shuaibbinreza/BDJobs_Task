@@ -1,6 +1,3 @@
-
-<!--end::Toolbar-->
-<!--begin::Content-->
 <div id="kt_app_content" class="app-content flex-column-fluid">
     <!--begin::Content container-->
     <div id="kt_app_content_container" class="app-container container-xxl">
@@ -12,10 +9,12 @@
                     <!--begin: Pic-->
                     <div class="me-7 mb-4">
                         <div class="symbol symbol-100px symbol-lg-160px symbol-fixed position-relative">
-                            <img src="{{ Auth::user()->image}}" alt="image" />
+                            <img src="{{ $ProfileImage->profile_image}}" alt="image" />
+                            
                             <div class="position-absolute translate-middle bottom-0 start-100 mb-6 bg-success rounded-circle border border-4 border-body h-20px w-20px"></div>
                         </div>
                     </div>
+                    
                     <!--end::Pic-->
                     <!--begin::Info-->
                     <div class="flex-grow-1">
@@ -36,18 +35,24 @@
                                 <!--end::Name-->
                                 <!--begin::Info-->
                                 <div class="d-flex flex-wrap fw-semibold fs-6 mb-4 pe-2">
-                                    <a href="#" class="d-flex align-items-center text-gray-400 text-hover-primary me-5 mb-2">
-                                    <i class="ki-duotone ki-profile-circle fs-4 me-1">
+                                    <a href="#" class="d-flex align-items-center text-gray-700 text-hover-primary me-5 mb-2">
+                                    {{-- <i class="ki-duotone ki-profile-circle fs-4 me-1">
                                         <span class="path1"></span>
                                         <span class="path2"></span>
                                         <span class="path3"></span>
-                                    </i>{{ Auth::user()->expertise}}</a>
-                                    <a href="#" class="d-flex align-items-center text-gray-400 text-hover-primary me-5 mb-2">
+                                    </i> --}}
+                                    <i class="fa-solid fa-brain me-1"></i> {{ Auth::user()->user_main_skill}}</a>
+                                    
+                                    <a href="#" class="d-flex align-items-center text-gray-700 text-hover-primary me-5 mb-2">
                                     <i class="ki-duotone ki-geolocation fs-4 me-1">
                                         <span class="path1"></span>
                                         <span class="path2"></span>
-                                    </i>{{ Auth::user()->address}}</a>
-                                    <a href="#" class="d-flex align-items-center text-gray-400 text-hover-primary mb-2">
+                                    </i>
+                                        @if ($address)
+                                            {{$address->district}}
+                                        @endif
+                                    </a>
+                                    <a href="#" class="d-flex align-items-center text-gray-700 text-hover-primary mb-2">
                                     <i class="ki-duotone ki-sms fs-4">
                                         <span class="path1"></span>
                                         <span class="path2"></span>
@@ -167,17 +172,40 @@
                             <!--begin::Wrapper-->
                             <div class="d-flex flex-column flex-grow-1 pe-8">
                                 <!--begin::Stats-->
-                                <div class="d-flex flex-wrap">
+                                <div class="d-flex flex-wrap row">
                                     <!--begin::Stat-->
-                                    <div class="border border-gray-500 border-dashed rounded min-w-125px py-3 px-4 me-6 mb-3">
+                                    <div class="border border-gray-500 col-sm border-dashed rounded min-w-125px py-3 px-4 me-6 mb-3">
                                         <!--begin::Number-->
                                         <div class="d-flex align-items-center">
-                                            <div class="fs-2 fw-bold" >About</div>
+                                            <div class="fs-2 fw-bold" >Education</div>
+                                        </div>
+                                        <!--end::Number-->
+                                        <!--begin::Label-->
+                                        <div class="fw-semibold fs-5 text-gray-700">
+                                            @if ($education)                                                
+                                                <p><b>Degree:</b> {{ $education->education_title }}</p>
+                                                <p><b>Institute:</b> {{ $education->education_institute }}</p>
+                                            @else
+                                                Open to work
+                                            @endif
+                                        </div>
+                                        <!--end::Label-->
+                                    </div>
+
+                                    <div class="border border-gray-500 col-sm border-dashed rounded min-w-125px py-3 px-4 me-6 mb-3">
+                                        <!--begin::Number-->
+                                        <div class="d-flex align-items-center">
+                                            <div class="fs-2 fw-bold" >Current Role</div>
                                         </div>
                                         <!--end::Number-->
                                         <!--begin::Label-->
                                         <div class="fw-semibold fs-6 text-gray-700">
-                                            {{ Auth::user()->about}}
+                                            @if ($jobexp)                                                
+                                                <p><b>Company:</b> {{ $jobexp->company_name}}</p>
+                                                <p><b>Designation:</b> {{ $jobexp->designation}}</p>
+                                            @else
+                                                Open to work
+                                            @endif
                                         </div>
                                         <!--end::Label-->
                                     </div>
@@ -219,16 +247,16 @@
                             </div>
                             <!--end::Wrapper-->
                             <!--begin::Progress-->
-                            <div class="d-flex align-items-center w-200px w-sm-300px flex-column mt-3">
-                                <div class="d-flex justify-content-between w-100 mt-auto mb-2">
-                                    <span class="fw-semibold fs-6 text-gray-400">Profile Compleation</span>
-                                    <span class="fw-bold fs-6">50%</span>
-                                </div>
-                                <div class="h-5px mx-3 w-100 bg-light mb-3">
-                                    <div class="bg-success rounded h-5px" role="progressbar" style="width: 50%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </div>
                             <!--end::Progress-->
+                        </div>
+                        <div class="d-flex align-items-center w-200px w-sm-300px flex-column mt-3">
+                            <div class="d-flex justify-content-between w-100 mt-auto mb-2">
+                                <span class="fw-semibold fs-6 text-gray-400">Profile Compleation</span>
+                                <span class="fw-bold fs-6">50%</span>
+                            </div>
+                            <div class="h-5px mx-3 w-100 bg-light mb-3">
+                                <div class="bg-success rounded h-5px" role="progressbar" style="width: 50%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
                         </div>
                         <!--end::Stats-->
                     </div>
@@ -288,4 +316,5 @@
         </div>                            
     </div>
 </div>
+
 

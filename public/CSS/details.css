@@ -1,0 +1,83 @@
+.nav-pills .nav-link.active {
+    color: #fbffff !important; /* Change to the desired text color */
+    /* background-color: #2c6093 !important; */
+    background-color: #595959 !important; /* Change to the desired background color */
+    padding: 10px 20px; /* Ensure active state has the same padding */
+
+}
+.nav-pills .nav-link {
+    font-size: 18px; /* Larger font size */
+    padding: 10px 20px; /* Increased padding for larger button area */
+    margin-right: 5px; /* Space between pills */
+    border-radius: .25rem; /* Optional: Adjust border-radius for rounded corners */
+    color: #4a4545;
+}
+.nav-pills .nav-link .fa-solid  {
+    font-size: 20px;
+}
+
+
+.img-w{
+    width: 16.68%;
+}
+
+.zoom-on-hover {
+    transition: transform 0.3s ease;
+}
+.zoom-on-hover:hover {
+transform: scale(1.1);
+}
+
+/* .modal-dialog.modal-side {
+    position: fixed;
+    margin: auto;
+    width: 600px;
+    max-width: 100%;
+    height: 100%;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    transition: transform 0.3s ease-out;
+}
+
+.modal.fade .modal-dialog.modal-side {
+    transform: translateX(100%);
+}
+
+.modal.fade.show .modal-dialog.modal-side {
+    transform: translateX(0);
+}
+
+.modal-body {
+    overflow-y: auto;
+    max-height: calc(100vh - 56px);
+} */
+
+.modal-dialog.modal-side {
+    
+    position: fixed;
+    margin: auto;
+    width: 500px;
+    max-width: 100%;
+    height: 100%;
+
+   
+    right: 25%;
+    top: 50%; 
+    transform: translateX(100%) translateY(-50%); 
+    transition: transform 0.3s ease-out;
+}
+
+.modal.fade .modal-dialog.modal-side {
+    transform: translateX(100%) translateY(-50%);
+}
+
+.modal.fade.show .modal-dialog.modal-side {
+    
+    transform: translateX(0%) translateY(-50%); 
+}
+
+.modal-body {
+    overflow-y: auto;
+    max-height: calc(100vh - 56px);
+}

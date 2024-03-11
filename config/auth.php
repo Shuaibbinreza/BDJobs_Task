@@ -17,7 +17,8 @@ return [
         'guard' => 'web',
         'passwords' => 'users',
     ],
-
+    
+    'global_variable' => 'Initial value',
     /*
     |--------------------------------------------------------------------------
     | Authentication Guards
